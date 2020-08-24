@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+// import 'package:flutter/rendering.dart';
 // import 'package:flutter/rendering.dart';
 
 void main() {
@@ -37,14 +37,54 @@ class Myhomepage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(appBar: AppBar(title: Text("Hello_World")),
-                    body: Column(
-                    children: <Widget>[TestWidget(),TestWidget(), TestWidget()],),);
+                    body: TextInputWiget() , );
   }
 }
 
-class TestWidget extends StatelessWidget{
+// class TestWidget extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context){
+//     return Text("Hello World!!");
+//   }
+// }
+
+class TextInputWiget extends StatefulWidget {
   @override
-  Widget build(BuildContext context){
-    return Text("Hello World!!");
+  _TextInputWigetState createState() => _TextInputWigetState();
+}
+
+class _TextInputWigetState extends State<TextInputWiget> {
+  final controller = TextEditingController();
+
+  String text= "";
+
+  @override
+  void dispose(){
+    super.dispose();
+    controller.dispose();
+  }
+
+  void changeText(text){
+
+    if(text == "Hello World!"){
+      controller.clear();
+      text = "";
+    }
+
+    setState(() {
+      this.text = text;
+      
+    });
+    
+
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Column( children : <Widget> 
+      [TextField(
+      controller: this.controller,
+      decoration: InputDecoration(prefixIcon: Icon(Icons.message), labelText: "Type a message"),
+      onChanged: (text) => this.changeText(text),),
+      Text(this.text)]);
   }
 }
