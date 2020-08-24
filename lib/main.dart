@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 // import 'package:flutter/rendering.dart';
 
 void main() {
@@ -35,6 +36,15 @@ class MyApp extends StatelessWidget {
 class Myhomepage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
-    return Scaffold();
+    return Scaffold(appBar: AppBar(title: Text("Hello_World")),
+                    body: Column(
+                    children: <Widget>[TestWidget(),TestWidget(), TestWidget()],),);
+  }
+}
+
+class TestWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Text("Hello World!!");
   }
 }
